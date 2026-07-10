@@ -21,3 +21,25 @@ jobs:
         uses: sbt/setup-sbt@v1
       - name: Build
         run: sbt check
+  UploadCoverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          java-version: 25
+          distribution: 'temurin'
+          cache: 'sbt'
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
+      - name: Run test with coverage
+        uses: sbt jacocoAggregate
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: '**/jacoco/report/jacoco.xml'
+          fail_ci_if_error: true
+          verbose: true
