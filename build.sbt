@@ -36,8 +36,12 @@ jacocoReportSettings := JacocoReportSettings(
   "Jacoco Coverage Report",
   None,
   JacocoThresholds(),
-  Seq(JacocoReportFormats.ScalaHTML, JacocoReportFormats.XML), // note XML formatter
-  "utf-8")
+  Seq(
+    JacocoReportFormats.ScalaHTML,
+    JacocoReportFormats.XML
+  ), // note XML formatter
+  "utf-8"
+)
 
 /*
  * Common libraries between subprojects...
