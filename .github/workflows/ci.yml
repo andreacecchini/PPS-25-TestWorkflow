@@ -35,7 +35,7 @@ jobs:
       - name: Setup sbt
         uses: sbt/setup-sbt@v1
       - name: Run test with coverage
-        uses: sbt jacocoAggregate
+        run: sbt jacocoAggregate
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
