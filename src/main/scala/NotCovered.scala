@@ -1,2 +1,2 @@
 object NotCovered:
-  def f(): Int = 42 
+  def f(): Int = 42
